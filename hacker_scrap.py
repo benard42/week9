@@ -16,15 +16,16 @@ hacker_found = {}
 
 for index, item in enumerate(hacker_found):
        try:
-           title = item.find("div", class_ = "item-info").find("a").text
-           link = item.find("div", class_ = "item-info").find("a").text
-           points = item.find(class_ = "price-current").strong.text
-           comments = item.find("div", class_ = "item-info").find("a").text
-           author = item.find("div", class_ = "item-info").find("a").text
-           rank = item.find(class_ = "price-current").strong.text
+           title = item.find("div", class_ = "title").text
+           link = item.find("div", class_ = "titleline").href
+           points = item.find(class_ = "subline").strong.text
+           comments = item.find("href", href = "item?id=33189724").href
+           author = item.find("div", class_ = "hnuser").find("a").text
+           rank = item.find('div', class_ = "votearrow").strong.text
            
        except:
         pass
+        hacker_found[index+1] = {'title':title, 'link':link, 'points':points, 'comments':comments, 'points':points, 'rank':rank}
 
-movies = hacker_found()
-movies.to_csv('movies.csv',index=None)
+hacker = hacker_found()
+hacker.to_csv('hacker.csv',index=None)
